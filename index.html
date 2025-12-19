@@ -7,20 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; padding-bottom: 180px; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; padding-bottom: 200px; }
         
-        /* Encabezado Principal */
         .header { text-align: center; padding: 30px 20px; }
         .logo-m { font-size: 80px; font-weight: bold; font-family: 'Times New Roman', serif; line-height: 1; }
         .logo-m::before { content: '👑'; font-size: 35px; display: block; margin-bottom: -10px; }
         h1 { font-size: 24px; letter-spacing: 3px; margin-top: 10px; text-transform: uppercase; }
 
-        /* Páginas */
         .page { display: none; max-width: 500px; margin: 0 auto; padding: 20px; animation: fadeIn 0.4s ease; }
         .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Menú Principal */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .btn-cat {
             background: #111; border: 1px solid #333; border-radius: 25px;
@@ -28,57 +25,42 @@
             align-items: center; gap: 15px; cursor: pointer; transition: 0.3s;
         }
         .btn-cat i { font-size: 35px; color: #ffcc00; }
-        .btn-cat:active { background: #222; transform: scale(0.95); }
 
-        /* Tarjetas de Servicio */
+        /* Tarjetas con Biografía del Servicio */
         .card-servicio { 
             background: #141414; border: 1px solid #222; padding: 20px; border-radius: 18px; 
             margin-bottom: 15px; text-align: left;
         }
-        .row { display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; color: #fff; }
-        .desc { font-size: 13px; color: #999; margin: 8px 0; display: block; line-height: 1.4; }
+        .row { display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; color: #ffcc00; }
+        .biografia { font-size: 13px; color: #bbb; margin: 10px 0; display: block; line-height: 1.5; border-top: 1px solid #222; padding-top: 10px; }
         
         .btn-add {
             background: #fff; color: #000; border: none; padding: 14px; border-radius: 12px;
-            font-weight: bold; cursor: pointer; width: 100%; font-size: 14px;
+            font-weight: bold; cursor: pointer; width: 100%; font-size: 14px; margin-top: 10px;
         }
         .btn-add.added { background: #ffcc00; }
 
-        /* Formulario de Información */
-        .form-reserva { background: #111; padding: 20px; border-radius: 20px; border: 1px solid #ffcc00; margin-top: 20px; text-align: left; }
-        .form-reserva label { display: block; color: #ffcc00; font-weight: bold; margin-bottom: 8px; font-size: 14px; }
-        .input-field { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: #000; color: #fff; margin-bottom: 15px; font-size: 16px; }
-        
-        /* Botón Niño */
-        .nino-box { 
-            display: flex; align-items: center; gap: 10px; background: #222; 
-            padding: 15px; border-radius: 10px; cursor: pointer; margin-bottom: 10px; 
-            transition: 0.3s; border: 1px solid transparent;
-        }
-        .nino-box.selected { background: #ffcc00; color: #000; border-color: #fff; }
-
-        /* Reseña / Review */
-        .review-card { background: #111; padding: 20px; border-radius: 20px; margin-top: 30px; border-left: 5px solid #ffcc00; text-align: left; }
-        .stars { color: #ffcc00; margin-bottom: 10px; }
+        /* Formulario */
+        .form-reserva { background: #111; padding: 20px; border-radius: 20px; border: 1px solid #ffcc00; margin-top: 10px; text-align: left; }
+        .input-field { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: #000; color: #fff; margin-bottom: 10px; font-size: 16px; }
+        .nino-box { display: flex; align-items: center; gap: 10px; background: #222; padding: 12px; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        .nino-box.selected { background: #ffcc00; color: #000; }
 
         .btn-volver { color: #ffcc00; background: none; border: none; margin-bottom: 25px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 16px; }
 
         /* Barra de Carrito */
         .cart-bar {
             position: fixed; bottom: 0; left: 0; right: 0; background: #ffcc00; color: #000;
-            padding: 25px; display: none; flex-direction: column; gap: 12px; z-index: 1000;
+            padding: 20px; display: none; flex-direction: column; gap: 12px; z-index: 1000;
             border-radius: 30px 30px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
         }
-        .btn-confirmar { background: #000; color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; text-align: center; }
+        .btn-confirmar { background: #000; color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; text-align: center; }
     </style>
 </head>
 <body>
 
     <div id="home" class="page active">
-        <div class="header">
-            <div class="logo-m">M</div>
-            <h1>manu.styles11</h1>
-        </div>
+        <div class="header"><div class="logo-m">M</div><h1>manu.styles11</h1></div>
         <div class="menu-grid">
             <div class="btn-cat" onclick="showPage('cortes')"><i class="fas fa-cut"></i><span>CORTES</span></div>
             <div class="btn-cat" onclick="showPage('facial')"><i class="fas fa-spa"></i><span>FACIALES</span></div>
@@ -86,104 +68,128 @@
             <div class="btn-cat" onclick="showPage('disenos')"><i class="fas fa-paint-brush"></i><span>DISEÑOS</span></div>
             <div class="btn-cat" onclick="showPage('color')" style="grid-column: span 2;"><i class="fas fa-palette"></i><span>COLORIMETRÍA</span></div>
         </div>
-
-        <div class="review-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p style="font-style: italic; color: #ddd;">"Excelente atención y profesionalismo. Manu se toma el tiempo para que el corte quede perfecto. ¡Súper recomendado!"</p>
-            <p style="margin-top: 10px; font-weight: bold; color: #ffcc00;">- Cliente Satisfecho</p>
-        </div>
     </div>
 
     <div id="cortes" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← VOLVER</button>
-        <div class="card-servicio"><div class="row"><span>Corte Estándar</span><span>$12.00</span></div><button class="btn-add" onclick="toggle('Corte Estándar', 12, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte + Barba</span><span>$16.00</span></div><button class="btn-add" onclick="toggle('Corte + Barba', 16, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte Premium</span><span>$20.00</span></div><button class="btn-add" onclick="toggle('Corte Premium', 20, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte Presidencial</span><span>$24.00</span></div><button class="btn-add" onclick="toggle('Corte Presidencial', 24, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte VIP</span><span>$27.00</span></div><button class="btn-add" onclick="toggle('Corte VIP', 27, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte Deluxe</span><span>$30.00</span></div><button class="btn-add" onclick="toggle('Corte Deluxe', 30, this)">Añadir</button></div>
+        <button class="btn-volver" onclick="showPage('home')">← VOLVER AL MENÚ</button>
+        
+        <div class="card-servicio">
+            <div class="row"><span>Corte Estándar</span><span>$12.00</span></div>
+            <p class="biografia">Incluye asesoría de imagen personalizada para resaltar tus rasgos, corte profesional con técnica de tijera o máquina y aplicación de mascarilla de cortesía al finalizar.</p>
+            <button class="btn-add" onclick="toggle('Corte Estándar', 12, this)">Añadir al pedido</button>
+        </div>
+
+        <div class="card-servicio">
+            <div class="row"><span>Corte + Barba</span><span>$16.00</span></div>
+            <p class="biografia">El combo perfecto. Incluye el corte de cabello de tu elección más el diseño y perfilado de barba con navaja para un acabado impecable y duradero.</p>
+            <button class="btn-add" onclick="toggle('Corte + Barba', 16, this)">Añadir al pedido</button>
+        </div>
+
+        <div class="card-servicio">
+            <div class="row"><span>Corte VIP</span><span>$27.00</span></div>
+            <p class="biografia">Una experiencia de relajación total. Incluye corte presidencial, vapor ozono, limpieza facial profunda, exfoliación, masaje capilar y productos premium de acabado.</p>
+            <button class="btn-add" onclick="toggle('Corte VIP', 27, this)">Añadir al pedido</button>
+        </div>
+        
+        <div class="card-servicio">
+            <div class="row"><span>Corte Deluxe</span><span>$30.00</span></div>
+            <p class="biografia">Máximo nivel de lujo. Servicio extendido con vapor constante, tratamiento hidratante de piel, perfilado premium y los mejores productos de nuestra línea exclusiva.</p>
+            <button class="btn-add" onclick="toggle('Corte Deluxe', 30, this)">Añadir al pedido</button>
+        </div>
     </div>
 
     <div id="facial" class="page">
         <button class="btn-volver" onclick="showPage('home')">← VOLVER</button>
-        <div class="card-servicio"><div class="row"><span>Facial Sencillo</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Facial Sencillo', 6, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Facial Profundo</span><span>$12.00</span></div><button class="btn-add" onclick="toggle('Facial Profundo', 12, this)">Añadir</button></div>
+        <div class="card-servicio">
+            <div class="row"><span>Facial Profundo</span><span>$12.00</span></div>
+            <p class="biografia">Elimina impurezas y puntos negros. Incluye vapor ozono para abrir poros, exfoliación profunda, extracción manual segura y mascarilla refrescante para cerrar poros.</p>
+            <button class="btn-add" onclick="toggle('Facial Profundo', 12, this)">Añadir al pedido</button>
+        </div>
     </div>
 
     <div id="barba" class="page">
         <button class="btn-volver" onclick="showPage('home')">← VOLVER</button>
-        <div class="card-servicio"><div class="row"><span>Marcado Cerquillo</span><span>$5.00</span></div><button class="btn-add" onclick="toggle('Marcado Cerquillo', 5, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Marcado Barba</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Marcado Barba', 6, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Barba + Productos</span><span>$8.00</span></div><button class="btn-add" onclick="toggle('Barba + Prod', 8, this)">Añadir</button></div>
+        <div class="card-servicio">
+            <div class="row"><span>Marcado Barba</span><span>$6.00</span></div>
+            <p class="biografia">Delineado preciso de las líneas de la mejilla y el cuello con navaja profesional para un aspecto limpio y ordenado.</p>
+            <button class="btn-add" onclick="toggle('Marcado Barba', 6, this)">Añadir al pedido</button>
+        </div>
+        <div class="card-servicio">
+            <div class="row"><span>Barba + Productos</span><span>$8.00</span></div>
+            <p class="biografia">Incluye el marcado con navaja más la aplicación de aceites hidratantes y bálsamos premium que cuidan el vello y la piel debajo de la barba.</p>
+            <button class="btn-add" onclick="toggle('Barba + Prod', 8, this)">Añadir al pedido</button>
+        </div>
     </div>
 
     <div id="disenos" class="page">
         <button class="btn-volver" onclick="showPage('home')">← VOLVER</button>
-        <div class="card-servicio"><div class="row"><span>Diseño Sencillo</span><span>$3.00</span></div><button class="btn-add" onclick="toggle('Diseño Sencillo', 3, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Diseño Extra</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Diseño Extra', 6, this)">Añadir</button></div>
+        <div class="card-servicio">
+            <div class="row"><span>Diseño Sencillo</span><span>$3.00</span></div>
+            <p class="biografia">Líneas rectas o curvas básicas laterales para darle un toque diferente y moderno a tu corte habitual.</p>
+            <button class="btn-add" onclick="toggle('Diseño Sencillo', 3, this)">Añadir al pedido</button>
+        </div>
+        <div class="card-servicio">
+            <div class="row"><span>Diseño Freestyle</span><span>$6.00</span></div>
+            <p class="biografia">Arte puro sobre tu cabello. Diseños complejos personalizados, sombreados y formas artísticas creadas a mano alzada.</p>
+            <button class="btn-add" onclick="toggle('Diseño Freestyle', 6, this)">Añadir al pedido</button>
+        </div>
     </div>
 
     <div id="color" class="page">
         <button class="btn-volver" onclick="showPage('home')">← VOLVER</button>
-        <div class="card-servicio"><div class="row"><span>Mechas / Tintes</span><span>$55.00</span></div><button class="btn-add" onclick="toggle('Tinte/Mechas', 55, this)">Añadir</button></div>
+        <div class="card-servicio">
+            <div class="row"><span>Mechas / Platinado</span><span>$55.00</span></div>
+            <p class="biografia">Cambio de look radical. Incluye proceso de decoloración profesional cuidando la fibra capilar y aplicación del tono deseado (Gris, Platinado o color).</p>
+            <button class="btn-add" onclick="toggle('Color/Mechas', 55, this)">Añadir al pedido</button>
+        </div>
     </div>
 
     <div id="cartBar" class="cart-bar">
-        <div class="form-reserva" style="margin-top: 0; margin-bottom: 15px; border: none; padding: 0;">
-            <input type="text" id="nombreCli" class="input-field" placeholder="Tu Nombre Completo..." style="margin-bottom: 10px;">
-            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                <input type="date" id="fechaCli" class="input-field" style="margin-bottom: 0;">
-                <input type="time" id="horaCli" class="input-field" style="margin-bottom: 0;">
+        <div class="form-reserva" style="margin-top: 0; margin-bottom: 10px; border: none; padding: 0;">
+            <input type="text" id="nombreCli" class="input-field" placeholder="Tu Nombre Completo...">
+            <div style="display: flex; gap: 10px;">
+                <input type="date" id="fecCli" class="input-field">
+                <input type="time" id="horCli" class="input-field">
             </div>
-            <div id="ninoBtn" class="nino-box" onclick="toggleNino()" style="padding: 10px;">
-                <i class="fas fa-child"></i> <span style="font-size: 12px; font-weight: bold;">¿ES PARA UN NIÑO?</span>
+            <div id="ninoBtn" class="nino-box" onclick="toggleNino()">
+                <i class="fas fa-child"></i> <span style="font-size: 13px; font-weight: bold;">¿ES CITA PARA UN NIÑO?</span>
             </div>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 10px;">
+        <div style="display:flex; justify-content:space-between; align-items: center;">
             <span id="resumen" style="font-weight:900; font-size:18px;">0 serv. ($0)</span>
-            <span onclick="enviar()" class="btn-confirmar" style="flex-grow: 1; margin-left: 15px;">CONFIRMAR POR WA</span>
+            <span onclick="enviar()" class="btn-confirmar" style="flex-grow: 1; margin-left: 15px;">CONSULTAR POR WA</span>
         </div>
     </div>
 
     <script>
         let items = []; let total = 0; let esNino = false;
-
         function showPage(id) { 
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0,0);
         }
-
         function toggle(n, p, btn) {
             const i = items.findIndex(x => x.n === n);
-            if (i > -1) { items.splice(i, 1); total -= p; btn.innerText = "Añadir"; btn.classList.remove('added'); }
-            else { items.push({n, p}); total += p; btn.innerText = "QUITAR"; btn.classList.add('added'); }
+            if (i > -1) { items.splice(i, 1); total -= p; btn.innerText = "Añadir al pedido"; btn.classList.remove('added'); }
+            else { items.push({n, p}); total += p; btn.innerText = "QUITAR SELECCIÓN"; btn.classList.add('added'); }
             document.getElementById('cartBar').style.display = items.length > 0 ? 'flex' : 'none';
             document.getElementById('resumen').innerText = items.length + " ($" + total + ")";
         }
-
-        function toggleNino() {
-            esNino = !esNino;
-            document.getElementById('ninoBtn').classList.toggle('selected');
-        }
-
+        function toggleNino() { esNino = !esNino; document.getElementById('ninoBtn').classList.toggle('selected'); }
         function enviar() {
             let nom = document.getElementById('nombreCli').value;
-            let fec = document.getElementById('fechaCli').value;
-            let hor = document.getElementById('horaCli').value;
+            let fec = document.getElementById('fecCli').value;
+            let hor = document.getElementById('horCli').value;
+            if(!nom || !fec || !hor) return alert("Por favor completa tu Nombre, Fecha y Hora.");
 
-            if(!nom || !fec || !hor) return alert("Por favor completa Nombre, Fecha y Hora.");
-
-            let m = "¡HOLA MANU! 👑\n\nReserva para:\n";
+            let m = "¡HOLA MANU! 👑\n\nQuiero consultar disponibilidad:\n";
             m += "👤 NOMBRE: " + nom + "\n";
             m += "📅 FECHA: " + fec + "\n";
             m += "⏰ HORA: " + hor + "\n";
-            if(esNino) m += "👶 CLIENTE: ES UN NIÑO\n";
-            m += "\n📝 SERVICIOS SELECCIONADOS:\n";
+            if(esNino) m += "👶 CITA PARA NIÑO: SÍ\n";
+            m += "\n📝 SERVICIOS:\n";
             items.forEach(x => m += "- " + x.n + " ($" + x.p + ")\n");
-            m += "\n💰 TOTAL: $" + total;
-            m += "\n\n¿Tienes disponibilidad?";
-            
+            m += "\n💰 TOTAL ESTIMADO: $" + total;
             window.open("https://wa.me/50769609615?text=" + encodeURIComponent(m));
         }
     </script>
