@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manu.styles11 | Reservas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
+        
+        /* Logo y Encabezado */
+        .logo-m { font-size: 80px; font-weight: bold; font-family: 'Times New Roman', serif; margin-top: 20px; color: #fff; position: relative; display: inline-block; }
+        .logo-m::before { content: '👑'; font-size: 40px; display: block; margin-bottom: -15px; }
+        h1 { font-size: 26px; margin-bottom: 5px; text-transform: lowercase; letter-spacing: 1px; }
+        .slogan { color: #888; font-size: 13px; margin-bottom: 30px; }
+
+        .menu-container { display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto; }
+        
+        /* Botones de Servicios Normales */
+        .btn-servicio { 
+            background: #111; border: 1px solid #333; padding: 18px; border-radius: 15px; 
+            text-decoration: none; color: #fff; display: flex; flex-direction: column; align-items: flex-start; 
+            transition: 0.3s;
+        }
+        .btn-servicio:active { background: #222; transform: scale(0.98); }
+
+        /* Botón de Delivery Resaltado */
+        .btn-delivery { 
+            background: linear-gradient(145deg, #ffcc00, #b89600); border: none; padding: 20px; 
+            border-radius: 15px; text-decoration: none; color: #000; font-weight: bold; margin-top: 15px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .btn-delivery:active { transform: scale(0.98); opacity: 0.9; }
+        
+        .row { display: flex; justify-content: space-between; width: 100%; font-size: 17px; font-weight: bold; }
+        .desc { font-size: 12px; color: #aaa; margin-top: 5px; text-align: left; }
+        .btn-delivery .desc-del { color: #000; font-size: 12px; font-weight: 500; margin-top: 4px; }
+        
+        .tag { font-size: 10px; color: #888; text-transform: uppercase; margin-top: 8px; border: 1px solid #333; padding: 2px 6px; border-radius: 4px; }
+        .seccion-titulo { font-size: 12px; color: #ffcc00; text-transform: uppercase; margin: 20px 0 10px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="logo-m">M</div>
+    <h1>manu.styles11</h1>
+    <p class="slogan">Cortes de alta gama & Asesoría</p>
+
+    <div class="menu-container">
+        
+        <div class="seccion-titulo">Servicios en Barbería</div>
+
+        <a href="https://zcal.co/i/gV_vkl4-" class="btn-servicio">
+            <div class="row"><span>Estándar</span> <span>$12.00</span></div>
+            <span class="desc">Corte a gusto + asesoría de imagen.</span>
+            <span class="tag"><i class="far fa-clock"></i> 45 MIN</span>
+        </a>
+
+        <a href="https://zcal.co/i/w1XiLNTr" class="btn-servicio">
+            <div class="row"><span>Corte + Barba</span> <span>$16.00</span></div>
+            <span class="desc">Marcado con navaja y mascarilla gratis.</span>
+            <span class="tag"><i class="far fa-clock"></i> 60 MIN</span>
+        </a>
+
+        <a href="https://zcal.co/i/Frf39XAQ" class="btn-servicio">
+            <div class="row"><span>Corte Premium</span> <span>$20.00</span></div>
+            <span class="desc">Corte + Barba + Limpieza facial media.</span>
+            <span class="tag"><i class="far fa-clock"></i> 1H 20 MIN</span>
+        </a>
+
+        <a href="https://zcal.co/i/BVDtrgKg" class="btn-servicio">
+            <div class="row"><span>Corte Presidencial</span> <span>$24.00</span></div>
+            <span class="desc">Servicio completo + limpieza profunda.</span>
+            <span class="tag"><i class="far fa-clock"></i> 1H 35 MIN</span>
+        </a>
+
+        <a href="https://zcal.co/i/UueTvQkq" class="btn-servicio">
+            <div class="row"><span>Corte VIP</span> <span>$27.00</span></div>
+            <span class="desc">Todo incluido + Masaje + Facial Pro.</span>
+            <span class="tag"><i class="far fa-clock"></i> 1H 55 MIN</span>
+        </a>
+
+        <div class="seccion-titulo">Horario Nocturno</div>
+
+        <a href="https://wa.me/50769609615?text=HOLA%20MANU!%20Quiero%20solicitar%20un%20DELIVERY%20nocturno.%0A%0A*FORMULARIO%20DE%20PEDIDO*%0A----------------------------%0A-%20Nombre:%0A-%20Servicio%20deseado:%0A-%20Dirección%20exacta:%0A-%20Hora%20estimada:" class="btn-delivery">
+            <div class="row"><span>SOLICITAR DELIVERY 🚚</span> <span>+$10.00</span></div>
+            <span class="desc-del">Disponible después de las 10:00 PM</span>
+            <span class="desc-del" style="font-size: 10px;">(Toca para llenar formulario por WhatsApp)</span>
+        </a>
+
+    </div>
+
+    <div class="footer" style="margin-top: 40px; font-size: 11px; color: #444;">
+        © 2025 MANU.STYLES11 <br>
+        PANAMÁ CITY
+    </div>
+
+</body>
+</html>
