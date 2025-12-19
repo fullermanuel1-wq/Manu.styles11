@@ -3,60 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manu.styles11 | Reservas</title>
+    <title>Manu.styles11 | Reservas Oficial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; padding-bottom: 150px; text-align: center; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; padding-bottom: 160px; text-align: center; }
         
-        .logo-m { font-size: 70px; font-weight: bold; font-family: 'Times New Roman', serif; margin-top: 20px; display: inline-block; }
-        .logo-m::before { content: '👑'; font-size: 30px; display: block; margin-bottom: -10px; }
-        h1 { font-size: 22px; letter-spacing: 2px; margin-bottom: 30px; }
+        /* Estética de Marca */
+        .logo-m { font-size: 80px; font-weight: bold; font-family: 'Times New Roman', serif; margin-top: 20px; display: inline-block; line-height: 1; }
+        .logo-m::before { content: '👑'; font-size: 35px; display: block; margin-bottom: -10px; }
+        h1 { font-size: 24px; letter-spacing: 3px; margin-bottom: 35px; text-transform: uppercase; }
 
-        .page { display: none; max-width: 500px; margin: 0 auto; padding: 20px; animation: fadeIn 0.3s ease; }
+        /* Contenedores de Páginas */
+        .page { display: none; max-width: 500px; margin: 0 auto; padding: 20px; animation: fadeIn 0.4s ease-out; }
         .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
+        /* Cuadritos del Menú Principal */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .btn-cat {
-            background: #111; border: 1px solid #333; border-radius: 20px;
-            padding: 30px 10px; color: #fff; display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer;
+            background: #111; border: 1px solid #333; border-radius: 25px;
+            padding: 35px 10px; color: #fff; display: flex; flex-direction: column; 
+            align-items: center; gap: 15px; cursor: pointer; transition: 0.3s;
         }
-        .btn-cat i { font-size: 30px; color: #ffcc00; }
+        .btn-cat i { font-size: 35px; color: #ffcc00; }
+        .btn-cat span { font-weight: bold; letter-spacing: 1px; }
+        .btn-cat:active { background: #222; transform: scale(0.95); }
 
-        .card-servicio { background: #161616; border: 1px solid #333; padding: 18px; border-radius: 15px; margin-bottom: 12px; text-align: left; }
-        .row { display: flex; justify-content: space-between; font-size: 17px; font-weight: bold; }
-        .desc { font-size: 12px; color: #aaa; margin: 8px 0; display: block; }
+        /* Tarjetas de Servicios */
+        .card-servicio { 
+            background: #141414; border: 1px solid #222; padding: 20px; border-radius: 18px; 
+            margin-bottom: 15px; text-align: left; transition: 0.3s;
+        }
+        .row { display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; color: #fff; }
+        .desc { font-size: 13px; color: #999; margin: 10px 0; display: block; line-height: 1.5; }
         
-        .btn-add { background: #fff; color: #000; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
-        .btn-add.added { background: #ffcc00; }
+        .btn-add {
+            background: #fff; color: #000; border: none; padding: 14px; border-radius: 12px;
+            font-weight: bold; cursor: pointer; width: 100%; font-size: 14px; text-transform: uppercase;
+        }
+        .btn-add.added { background: #ffcc00; color: #000; }
 
-        /* CALENDARIO CORREGIDO */
+        /* Calendarios Zcal */
         .zcal-box { 
-            margin-top: 20px; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            border: 2px solid #ffcc00; 
-            height: 600px; /* Aumentado para que se vea bien en celular */
-            background: #fff; 
-            position: relative;
-            -webkit-overflow-scrolling: touch;
+            margin-top: 25px; border-radius: 20px; overflow: hidden; 
+            border: 2px solid #ffcc00; height: 650px; background: #fff; 
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.2);
         }
         iframe { width: 100%; height: 100%; border: none; }
 
+        /* Formulario de Datos */
         .input-nombre {
-            width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ffcc00;
-            background: #111; color: #fff; margin-bottom: 20px; font-size: 16px;
+            width: 100%; padding: 18px; border-radius: 15px; border: 1px solid #444;
+            background: #0a0a0a; color: #fff; margin-bottom: 25px; font-size: 16px; outline: none;
+        }
+        .input-nombre:focus { border-color: #ffcc00; }
+
+        .btn-volver { 
+            color: #ffcc00; background: none; border: none; margin-bottom: 25px; 
+            cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold;
         }
 
-        .btn-volver { color: #ffcc00; background: none; border: none; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 16px; }
-
+        /* Barra de Reservación (Carrito) */
         .cart-bar {
             position: fixed; bottom: 0; left: 0; right: 0; background: #ffcc00; color: #000;
-            padding: 15px 20px; display: none; flex-direction: column; gap: 10px; z-index: 999;
-            border-radius: 20px 20px 0 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            padding: 20px 25px; display: none; flex-direction: column; gap: 12px; z-index: 1000;
+            border-radius: 30px 30px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
         }
-        .btn-confirmar { background: #000; color: #fff; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .cart-flex { display: flex; justify-content: space-between; align-items: center; }
+        .cart-text { font-weight: 900; font-size: 18px; }
+        .btn-confirmar { 
+            background: #000; color: #fff; padding: 12px 25px; border-radius: 12px; 
+            text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
@@ -65,63 +84,104 @@
         <div class="logo-m">M</div>
         <h1>manu.styles11</h1>
         <div class="menu-grid">
-            <div onclick="showPage('cortes')" class="btn-cat"><i class="fas fa-cut"></i><span>Cortes</span></div>
-            <div onclick="showPage('facial')" class="btn-cat"><i class="fas fa-spa"></i><span>Faciales</span></div>
-            <div onclick="showPage('barba')" class="btn-cat"><i class="fas fa-user-tie"></i><span>Barba</span></div>
-            <div onclick="showPage('disenos')" class="btn-cat"><i class="fas fa-paint-brush"></i><span>Diseños</span></div>
-            <div onclick="showPage('color')" class="btn-cat" style="grid-column: span 2;"><i class="fas fa-palette"></i><span>Color y Tintes</span></div>
+            <div class="btn-cat" onclick="showPage('cortes')"><i class="fas fa-cut"></i><span>CORTES</span></div>
+            <div class="btn-cat" onclick="showPage('facial')"><i class="fas fa-spa"></i><span>FACIALES</span></div>
+            <div class="btn-cat" onclick="showPage('barba')"><i class="fas fa-user-tie"></i><span>BARBA</span></div>
+            <div class="btn-cat" onclick="showPage('disenos')"><i class="fas fa-paint-brush"></i><span>DISEÑOS</span></div>
+            <div class="btn-cat" onclick="showPage('color')" style="grid-column: span 2;"><i class="fas fa-palette"></i><span>COLORIMETRÍA</span></div>
         </div>
     </div>
 
     <div id="cortes" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← Volver</button>
-        <input type="text" class="input-nombre" placeholder="Tu Nombre y Teléfono...">
-        <div class="card-servicio"><div class="row"><span>Corte Deluxe</span><span>$30.00</span></div><span class="desc">Vapor constante y máximo detalle.</span><button class="btn-add" onclick="toggle('Corte Deluxe', 30, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte VIP</span><span>$27.00</span></div><button class="btn-add" onclick="toggle('Corte VIP', 27, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte Estándar</span><span>$12.00</span></div><button class="btn-add" onclick="toggle('Corte Estándar', 12, this)">Añadir</button></div>
+        <button class="btn-volver" onclick="showPage('home')"><i class="fas fa-chevron-left"></i> VOLVER AL MENÚ</button>
+        <input type="text" class="input-nombre" placeholder="Escribe tu nombre completo...">
         
-        <p style="color:#ffcc00; font-weight:bold; margin-top:20px;">1. ELIGE DÍA Y HORA (AM/PM):</p>
-        <div class="zcal-box">
-            <iframe src="https://zcal.co/i/gV_vkl4-?embed=1" loading="lazy"></iframe>
-        </div>
+        <div class="card-servicio"><div class="row"><span>Corte Estándar</span><span>$12.00</span></div><span class="desc">Asesoría de imagen + mascarilla de cortesía.</span><button class="btn-add" onclick="toggle('Corte Estándar', 12, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Corte + Barba</span><span>$16.00</span></div><span class="desc">Perfilado con navaja y acabado profesional.</span><button class="btn-add" onclick="toggle('Corte + Barba', 16, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Corte Premium</span><span>$20.00</span></div><span class="desc">Lavado, tratamiento de vapor y mascarilla.</span><button class="btn-add" onclick="toggle('Corte Premium', 20, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Corte Presidencial</span><span>$24.00</span></div><span class="desc">Vapor, exfoliación profunda, barba y mascarilla.</span><button class="btn-add" onclick="toggle('Corte Presidencial', 24, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Corte VIP</span><span>$27.00</span></div><span class="desc">Experiencia completa, masajes y facial pro.</span><button class="btn-add" onclick="toggle('Corte VIP', 27, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Corte Deluxe</span><span>$30.00</span></div><span class="desc">Servicio de lujo con vapor ozono constante.</span><button class="btn-add" onclick="toggle('Corte Deluxe', 30, this)">Añadir</button></div>
+
+        <h3 style="color:#ffcc00; margin-top:30px;">ELIGE TU HORA (AM/PM)</h3>
+        <div class="zcal-box"><iframe src="https://zcal.co/i/gV_vkl4-?embed=1"></iframe></div>
     </div>
 
     <div id="facial" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← Volver</button>
-        <input type="text" class="input-nombre" placeholder="Tu Nombre y Teléfono...">
-        <div class="card-servicio"><div class="row"><span>Facial Profundo</span><span>$12.00</span></div><button class="btn-add" onclick="toggle('Facial Profundo', 12, this)">Añadir</button></div>
-        <div class="zcal-box">
-            <iframe src="https://zcal.co/i/UueTvQkq?embed=1" loading="lazy"></iframe>
-        </div>
+        <button class="btn-volver" onclick="showPage('home')"><i class="fas fa-chevron-left"></i> VOLVER</button>
+        <input type="text" class="input-nombre" placeholder="Tu nombre...">
+        <div class="card-servicio"><div class="row"><span>Facial Sencillo</span><span>$6.00</span></div><span class="desc">Limpieza express e hidratación básica.</span><button class="btn-add" onclick="toggle('Facial Sencillo', 6, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Facial Profundo</span><span>$12.00</span></div><span class="desc">Extracción, vapor ozono y mascarilla pro.</span><button class="btn-add" onclick="toggle('Facial Profundo', 12, this)">Añadir</button></div>
+        <div class="zcal-box"><iframe src="https://zcal.co/i/UueTvQkq?embed=1"></iframe></div>
+    </div>
+
+    <div id="barba" class="page">
+        <button class="btn-volver" onclick="showPage('home')"><i class="fas fa-chevron-left"></i> VOLVER</button>
+        <input type="text" class="input-nombre" placeholder="Tu nombre...">
+        <div class="card-servicio"><div class="row"><span>Marcado Cerquillo</span><span>$5.00</span></div><button class="btn-add" onclick="toggle('Marcado Cerquillo', 5, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Marcado Barba</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Marcado Barba', 6, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Barba + Productos</span><span>$8.00</span></div><span class="desc">Delineado con aceites y toalla caliente.</span><button class="btn-add" onclick="toggle('Barba + Prod', 8, this)">Añadir</button></div>
+    </div>
+
+    <div id="disenos" class="page">
+        <button class="btn-volver" onclick="showPage('home')"><i class="fas fa-chevron-left"></i> VOLVER</button>
+        <input type="text" class="input-nombre" placeholder="Tu nombre...">
+        <div class="card-servicio"><div class="row"><span>Diseño Sencillo</span><span>$3.00</span></div><button class="btn-add" onclick="toggle('Diseño Sencillo', 3, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Diseño Extra</span><span>$6.00</span></div><span class="desc">Arte freestyle complejo y sombreado.</span><button class="btn-add" onclick="toggle('Diseño Extra', 6, this)">Añadir</button></div>
+    </div>
+
+    <div id="color" class="page">
+        <button class="btn-volver" onclick="showPage('home')"><i class="fas fa-chevron-left"></i> VOLVER</button>
+        <div class="card-servicio"><div class="row"><span>Mechas</span><span>$55.00</span></div><button class="btn-add" onclick="toggle('Mechas', 55, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Decoloración</span><span>$55.00</span></div><button class="btn-add" onclick="toggle('Decoloración', 55, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Color Fantasía</span><span>CONSULTAR</span></div><span class="desc">Toca para consultar precio según largo.</span><button class="btn-add" onclick="toggle('Color Fantasía', 0, this)">Consultar</button></div>
     </div>
 
     <div id="cartBar" class="cart-bar">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span id="resumen" style="font-weight:bold;">0 serv. ($0)</span>
-            <span onclick="enviar()" class="btn-confirmar">CONFIRMAR WHATSAPP</span>
+        <div class="cart-flex">
+            <span id="resumen" class="cart-text">0 serv. ($0)</span>
+            <span onclick="enviar()" class="btn-confirmar">AGENDAR POR WHATSAPP</span>
         </div>
+        <p style="font-size:11px; color:#222; font-weight:bold;">¡No olvides elegir tu hora en el calendario arriba!</p>
     </div>
 
     <script>
         let items = []; let total = 0;
+
         function showPage(id) { 
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0,0);
         }
+
         function toggle(n, p, btn) {
             const i = items.findIndex(x => x.n === n);
-            if (i > -1) { items.splice(i, 1); total -= p; btn.innerText = "Añadir"; btn.classList.remove('added'); }
-            else { items.push({n, p}); total += p; btn.innerText = "QUITAR"; btn.classList.add('added'); }
-            document.getElementById('cartBar').style.display = items.length > 0 ? 'flex' : 'none';
+            if (i > -1) { 
+                items.splice(i, 1); total -= p; 
+                btn.innerText = "Añadir"; btn.classList.remove('added'); 
+            } else { 
+                items.push({n, p}); total += p; 
+                btn.innerText = "QUITAR"; btn.classList.add('added'); 
+            }
+            const bar = document.getElementById('cartBar');
+            bar.style.display = items.length > 0 ? 'flex' : 'none';
             document.getElementById('resumen').innerText = items.length + " serv. ($" + total + ")";
         }
+
         function enviar() {
-            let nombre = document.querySelector('.active .input-nombre').value;
-            if(!nombre) return alert("Escribe tu nombre para la reserva");
-            let m = "¡HOLA MANU! 👑\nNombre: " + nombre + "\n\nYa agendé en el calendario. Mis servicios:\n";
-            items.forEach(x => m += "✅ " + x.n + " ($" + x.p + ")\n");
-            m += "\nTOTAL: $" + total;
+            let nombreInput = document.querySelector('.active .input-nombre');
+            let nombre = nombreInput ? nombreInput.value : "Cliente";
+            
+            if(!nombre || nombre.trim() === "") {
+                alert("Por favor, ingresa tu nombre antes de confirmar.");
+                return;
+            }
+
+            let m = "¡HOLA MANU! 👑\n\n👤 NOMBRE: " + nombre + "\n\nYa agendé mi hora en el calendario. Mis servicios acumulados son:\n\n";
+            items.forEach(x => m += "✅ " + x.n + (x.p > 0 ? " ($" + x.p + ")" : " (A consultar)") + "\n");
+            m += "\n💰 TOTAL ESTIMADO: $" + total;
+            m += "\n\n¡Espero tu confirmación!";
+            
             window.open("https://wa.me/50769609615?text=" + encodeURIComponent(m));
         }
     </script>
