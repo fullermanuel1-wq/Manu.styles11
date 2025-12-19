@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manu.styles11 | Reservas Oficial</title>
+    <title>Manu.styles11 | Reservas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; padding-bottom: 140px; text-align: center; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; padding-bottom: 150px; text-align: center; }
         
         .logo-m { font-size: 70px; font-weight: bold; font-family: 'Times New Roman', serif; margin-top: 20px; display: inline-block; }
         .logo-m::before { content: '👑'; font-size: 30px; display: block; margin-bottom: -10px; }
@@ -17,7 +17,6 @@
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Menú de Botones */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .btn-cat {
             background: #111; border: 1px solid #333; border-radius: 20px;
@@ -25,25 +24,26 @@
         }
         .btn-cat i { font-size: 30px; color: #ffcc00; }
 
-        /* Tarjetas de Servicio */
-        .card-servicio { 
-            background: #161616; border: 1px solid #333; padding: 18px; border-radius: 15px; 
-            margin-bottom: 12px; text-align: left;
-        }
+        .card-servicio { background: #161616; border: 1px solid #333; padding: 18px; border-radius: 15px; margin-bottom: 12px; text-align: left; }
         .row { display: flex; justify-content: space-between; font-size: 17px; font-weight: bold; }
         .desc { font-size: 12px; color: #aaa; margin: 8px 0; display: block; }
         
-        .btn-add {
-            background: #fff; color: #000; border: none; padding: 10px; border-radius: 8px;
-            font-weight: bold; cursor: pointer; width: 100%;
-        }
+        .btn-add { background: #fff; color: #000; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
         .btn-add.added { background: #ffcc00; }
 
-        /* Calendario */
-        .zcal-box { margin-top: 20px; border-radius: 15px; overflow: hidden; border: 2px solid #ffcc00; height: 500px; background: #fff; }
-        .instruccion { color: #ffcc00; font-weight: bold; margin: 20px 0 10px; display: block; }
+        /* CALENDARIO CORREGIDO */
+        .zcal-box { 
+            margin-top: 20px; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            border: 2px solid #ffcc00; 
+            height: 600px; /* Aumentado para que se vea bien en celular */
+            background: #fff; 
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+        }
+        iframe { width: 100%; height: 100%; border: none; }
 
-        /* Formulario Nombre */
         .input-nombre {
             width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ffcc00;
             background: #111; color: #fff; margin-bottom: 20px; font-size: 16px;
@@ -51,7 +51,6 @@
 
         .btn-volver { color: #ffcc00; background: none; border: none; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 16px; }
 
-        /* Barra de Carrito */
         .cart-bar {
             position: fixed; bottom: 0; left: 0; right: 0; background: #ffcc00; color: #000;
             padding: 15px 20px; display: none; flex-direction: column; gap: 10px; z-index: 999;
@@ -66,53 +65,34 @@
         <div class="logo-m">M</div>
         <h1>manu.styles11</h1>
         <div class="menu-grid">
-            <div class="btn-cat" onclick="showPage('cortes')"><i class="fas fa-cut"></i><span>Cortes</span></div>
-            <div class="btn-cat" onclick="showPage('facial')"><i class="fas fa-spa"></i><span>Faciales</span></div>
-            <div class="btn-cat" onclick="showPage('barba')"><i class="fas fa-user-tie"></i><span>Barba</span></div>
-            <div class="btn-cat" onclick="showPage('disenos')"><i class="fas fa-paint-brush"></i><span>Diseños</span></div>
-            <div class="btn-cat" onclick="showPage('color')" style="grid-column: span 2;"><i class="fas fa-palette"></i><span>Color y Tintes</span></div>
+            <div onclick="showPage('cortes')" class="btn-cat"><i class="fas fa-cut"></i><span>Cortes</span></div>
+            <div onclick="showPage('facial')" class="btn-cat"><i class="fas fa-spa"></i><span>Faciales</span></div>
+            <div onclick="showPage('barba')" class="btn-cat"><i class="fas fa-user-tie"></i><span>Barba</span></div>
+            <div onclick="showPage('disenos')" class="btn-cat"><i class="fas fa-paint-brush"></i><span>Diseños</span></div>
+            <div onclick="showPage('color')" class="btn-cat" style="grid-column: span 2;"><i class="fas fa-palette"></i><span>Color y Tintes</span></div>
         </div>
     </div>
 
     <div id="cortes" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← Menú Principal</button>
-        <input type="text" id="nombreCortes" class="input-nombre" placeholder="Tu Nombre Completo...">
-        
-        <div class="card-servicio"><div class="row"><span>Corte Estándar</span><span>$12.00</span></div><span class="desc">Mascarilla de cortesía incluida.</span><button class="btn-add" onclick="toggle('Corte Estándar', 12, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte + Barba</span><span>$16.00</span></div><button class="btn-add" onclick="toggle('Corte + Barba', 16, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Corte VIP</span><span>$27.00</span></div><span class="desc">Vapor, facial y masaje.</span><button class="btn-add" onclick="toggle('Corte VIP', 27, this)">Añadir</button></div>
+        <button class="btn-volver" onclick="showPage('home')">← Volver</button>
+        <input type="text" class="input-nombre" placeholder="Tu Nombre y Teléfono...">
         <div class="card-servicio"><div class="row"><span>Corte Deluxe</span><span>$30.00</span></div><span class="desc">Vapor constante y máximo detalle.</span><button class="btn-add" onclick="toggle('Corte Deluxe', 30, this)">Añadir</button></div>
-
-        <span class="instruccion">1. ELIGE TU DÍA Y HORA (AM/PM) AQUÍ:</span>
-        <div class="zcal-box"><iframe src="https://zcal.co/i/gV_vkl4-?embed=1" width="100%" height="100%" frameborder="0"></iframe></div>
+        <div class="card-servicio"><div class="row"><span>Corte VIP</span><span>$27.00</span></div><button class="btn-add" onclick="toggle('Corte VIP', 27, this)">Añadir</button></div>
+        <div class="card-servicio"><div class="row"><span>Corte Estándar</span><span>$12.00</span></div><button class="btn-add" onclick="toggle('Corte Estándar', 12, this)">Añadir</button></div>
+        
+        <p style="color:#ffcc00; font-weight:bold; margin-top:20px;">1. ELIGE DÍA Y HORA (AM/PM):</p>
+        <div class="zcal-box">
+            <iframe src="https://zcal.co/i/gV_vkl4-?embed=1" loading="lazy"></iframe>
+        </div>
     </div>
 
     <div id="facial" class="page">
         <button class="btn-volver" onclick="showPage('home')">← Volver</button>
-        <input type="text" id="nombreFacial" class="input-nombre" placeholder="Tu Nombre Completo...">
-        <div class="card-servicio"><div class="row"><span>Facial Sencillo</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Facial Sencillo', 6, this)">Añadir</button></div>
+        <input type="text" class="input-nombre" placeholder="Tu Nombre y Teléfono...">
         <div class="card-servicio"><div class="row"><span>Facial Profundo</span><span>$12.00</span></div><button class="btn-add" onclick="toggle('Facial Profundo', 12, this)">Añadir</button></div>
-        <div class="zcal-box"><iframe src="https://zcal.co/i/UueTvQkq?embed=1" width="100%" height="100%" frameborder="0"></iframe></div>
-    </div>
-
-    <div id="barba" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← Volver</button>
-        <input type="text" id="nombreBarba" class="input-nombre" placeholder="Tu Nombre Completo...">
-        <div class="card-servicio"><div class="row"><span>Marcado Barba</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Marcado Barba', 6, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Barba + Prod</span><span>$8.00</span></div><button class="btn-add" onclick="toggle('Barba + Prod', 8, this)">Añadir</button></div>
-    </div>
-
-    <div id="disenos" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← Volver</button>
-        <input type="text" id="nombreDiseno" class="input-nombre" placeholder="Tu Nombre Completo...">
-        <div class="card-servicio"><div class="row"><span>Diseño Sencillo</span><span>$3.00</span></div><button class="btn-add" onclick="toggle('Diseño Sencillo', 3, this)">Añadir</button></div>
-        <div class="card-servicio"><div class="row"><span>Diseño Extra</span><span>$6.00</span></div><button class="btn-add" onclick="toggle('Diseño Extra', 6, this)">Añadir</button></div>
-    </div>
-
-    <div id="color" class="page">
-        <button class="btn-volver" onclick="showPage('home')">← Volver</button>
-        <div class="card-servicio"><div class="row"><span>Mechas / Tintes</span><span>$55.00</span></div><button class="btn-add" onclick="toggle('Tinte/Mechas', 55, this)">Añadir</button></div>
-        <p style="font-size:12px; color:#ffcc00;">* Para colores especiales se requiere cita previa por WhatsApp.</p>
+        <div class="zcal-box">
+            <iframe src="https://zcal.co/i/UueTvQkq?embed=1" loading="lazy"></iframe>
+        </div>
     </div>
 
     <div id="cartBar" class="cart-bar">
@@ -120,7 +100,6 @@
             <span id="resumen" style="font-weight:bold;">0 serv. ($0)</span>
             <span onclick="enviar()" class="btn-confirmar">CONFIRMAR WHATSAPP</span>
         </div>
-        <p style="font-size:10px; color:#333;">Asegúrate de haber puesto tu nombre y elegido la hora en el calendario.</p>
     </div>
 
     <script>
@@ -138,14 +117,11 @@
             document.getElementById('resumen').innerText = items.length + " serv. ($" + total + ")";
         }
         function enviar() {
-            // Obtener el nombre del input que esté activo
-            let nombre = document.querySelector('.active .input-nombre') ? document.querySelector('.active .input-nombre').value : "Cliente";
-            if(nombre === "") { alert("Por favor, pon tu nombre."); return; }
-
-            let m = "¡HOLA MANU! 👑\n\n👤 NOMBRE: " + nombre + "\n\nYa reservé mi hora en el calendario. Mis servicios son:\n";
+            let nombre = document.querySelector('.active .input-nombre').value;
+            if(!nombre) return alert("Escribe tu nombre para la reserva");
+            let m = "¡HOLA MANU! 👑\nNombre: " + nombre + "\n\nYa agendé en el calendario. Mis servicios:\n";
             items.forEach(x => m += "✅ " + x.n + " ($" + x.p + ")\n");
-            m += "\n💰 TOTAL: $" + total;
-            m += "\n\n¡Nos vemos allá!";
+            m += "\nTOTAL: $" + total;
             window.open("https://wa.me/50769609615?text=" + encodeURIComponent(m));
         }
     </script>
